@@ -5,16 +5,17 @@
 class GameBoard {
 
     public:
-    std::vector<std::vector<char>> board;
-    char currentSymbol;
 
-    void display();
+    void display() const;
     void doMove(int x, int y);
     bool checkWinner() const;
     GameBoard(int size);
     ~GameBoard();
 
     private:
+    std::vector<std::vector<char>> board;
+    char currentSymbol;
+    int boardSize;
     void changeSymbol();
-    bool checkMoveValid(int x, int y);
+    bool checkMoveValid(int x, int y) const;
 };
