@@ -12,9 +12,10 @@ int main()
 
     while (playAgain) {
         GameBoard board(3);
-        Player player1("XXX", 'X');
-        Player player2("YYY", '0');
-        Player *currentPlayer = &player1;
+        std::shared_ptr<Player> player1 = std::make_unique<Player>("XXX", 'X');
+        std::shared_ptr<Player> player2 = std::make_unique<Player>("YYY", '0');       
+
+        std::shared_ptr<Player> currentPlayer = player1;
 
         int x = 0;
         int y = 0;
@@ -27,7 +28,7 @@ int main()
             board.doMove(x, y);
             board.display();
 
-            currentPlayer = (currentPlayer == &player1) ? &player2 : &player1;
+            currentPlayer = (currentPlayer == player1) ? player2 : player1;
         }
         std::cout << "Winner! " << currentPlayer->getName();
 

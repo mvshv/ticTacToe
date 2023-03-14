@@ -11,7 +11,16 @@ public:
 
     Player();
     Player(std::string name, char symbol);
+    Player(const Player& other) : name(other.name), symbol(other.symbol) {}
     ~Player();
+
+    Player& operator=(Player&& other) noexcept {
+    if (this != &other) {
+        name = std::move(other.name);
+        symbol = other.symbol;
+    }
+    return *this;
+    }
 
 private:
     std::string name;
