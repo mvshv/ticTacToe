@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 GameBoard::GameBoard(int size) : 
-    board(std::vector<std::vector<char>>(size, std::vector<char>(size, ' '))),
+    board(size, std::vector<char>(size, ' ')),
     currentSymbol('X'),
     boardSize(size) {
 
@@ -18,10 +18,8 @@ void GameBoard::display() const{
     for(int i = 0; i < boardSize; ++i) {
         for(int j = 0; j < boardSize; ++j) {
             std::cout << " | " << board[i][j] << " | ";
-
-            if(j == boardSize - 1)
-                std::cout << "\n---------------------\n";
         }
+        std::cout << "\n\n";
     }
 }
 
@@ -57,10 +55,11 @@ bool GameBoard::checkWinner() const {
         if(board[0][j] != ' ' && board[0][j] == board[1][j] && board[1][j] == board[2][j])
             return true;
 
+    // horizontal from left top to right bottom
     for(int i = 0; i < board.size() - 2; ++i)
         if(board[i][i] != ' ' && board[i][i] == board[i + 1][i + 1] && board[i + 1][i + 1] == board[i + 2][i + 2])
             return true;
-
+    // horizontal from right top to left bottom
     for(int i = 0; i < board.size() - 2; ++i)
         if(board[i][board.size() - 1] != ' ' && board[i][board.size() - 1] == board[i + 1][board.size() - 2] && board[i + 1][board.size() - 2] == board[i + 2][board.size() - 3])
             return true;

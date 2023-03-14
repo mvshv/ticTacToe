@@ -9,6 +9,7 @@ class GameBoard {
     void display() const;
     void doMove(int x, int y);
     bool checkWinner() const;
+    bool checkMoveValid(int x, int y) const;
     GameBoard(int size);
     ~GameBoard();
 
@@ -17,5 +18,4 @@ class GameBoard {
     char currentSymbol;
     int boardSize;
     void changeSymbol();
-    bool checkMoveValid(int x, int y) const;
 };
