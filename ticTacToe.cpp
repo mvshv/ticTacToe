@@ -12,8 +12,8 @@ int main()
 
     while (playAgain) {
         GameBoard board(3);
-        std::shared_ptr<Player> player1 = std::make_unique<Player>("XXX", 'X');
-        std::shared_ptr<Player> player2 = std::make_unique<Player>("YYY", '0');       
+        std::shared_ptr<Player> player1 = std::make_unique<HumanPlayer>("XXX", 'X');
+        std::shared_ptr<Player> player2 = std::make_unique<HumanPlayer>("YYY", '0');       
 
         std::shared_ptr<Player> currentPlayer = player1;
 
@@ -23,12 +23,14 @@ int main()
         while (!board.checkWinner()){
             std::cout << currentPlayer->getName() << " make move: \n";
 
-            std::cin >> x >> y;
-
-            board.doMove(x, y);
+            Move move = currentPlayer->doMove();
+            board.doMove(move.x, move.y);
             board.display();
 
             currentPlayer = (currentPlayer == player1) ? player2 : player1;
+
+            if(currentPlayer->getTypeOfPlayer() == PlayerType::Human)
+                std::cout << "NOW ITS HUMAN MOVE\n";
         }
         std::cout << "Winner! " << currentPlayer->getName();
 
