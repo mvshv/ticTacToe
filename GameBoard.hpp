@@ -7,8 +7,9 @@ class GameBoard {
     public:
 
     void display() const;
-    void doMove(int x, int y);
+    bool doMove(int x, int y);
     bool checkWinner() const;
+    bool checkDraw() const;
     bool checkMoveValid(int x, int y) const;
     GameBoard(int size);
     ~GameBoard();

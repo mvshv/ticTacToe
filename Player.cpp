@@ -32,17 +32,3 @@ char Player::getSymbol() const {
 PlayerType Player::getTypeOfPlayer() const {
     return type;
 }
-
-
-
-    // Move doMove() override {
-    //     // Use a random number generator to select a move
-    //     std::mt19937 rng(std::chrono::steady_clock::now().time_since_epoch().count());
-    //     std::uniform_int_distribution<int> dist(0, 2);
-    //     int x = dist(rng);
-    //     int y = dist(rng);
-
-    //     Move move = {x, y};
-    //     std::cout << getName() << " makes move: " << x << ", " << y << std::endl;
-    //     return move;
-    // }

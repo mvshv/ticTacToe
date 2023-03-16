@@ -23,13 +23,17 @@ void GameBoard::display() const{
     }
 }
 
-void GameBoard::doMove(int x, int y) {
+bool GameBoard::doMove(int x, int y) {
     if(checkMoveValid(x, y)) {
         this->board[x][y] = currentSymbol;
         changeSymbol();
+        std::cout << "draw: " << checkDraw() << "\n";
+        return true;
     }
     else
         std::cout << "Entered incorrect values\n";
+    return false;
+        
 }
 
 bool GameBoard::checkMoveValid(int x, int y) const{
@@ -64,7 +68,16 @@ bool GameBoard::checkWinner() const {
         if(board[i][board.size() - 1] != ' ' && board[i][board.size() - 1] == board[i + 1][board.size() - 2] && board[i + 1][board.size() - 2] == board[i + 2][board.size() - 3])
             return true;
 
+
     return false;
+}
+
+bool GameBoard::checkDraw() const {
+    for(int i = 0; i < board.size(); ++i)
+        for(int j = 0; j < board[i].size(); ++j)
+            if(board[i][j] == ' ') 
+                return false;
+    return true;
 }
 
 void GameBoard::changeSymbol() {

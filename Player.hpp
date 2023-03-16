@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <random>
 
 struct Move {
     int x;
@@ -57,10 +58,15 @@ public:
 
     ComputerPlayer (std::string name, char symbol) : Player(name, symbol, PlayerType::Computer) {}
     Move doMove() override {
-        // logic to generate a computer move
-        Move move;
-        move.x = 1; // example move
-        move.y = 2; // example move
+
+        std::mt19937 rng(std::chrono::steady_clock::now().time_since_epoch().count());
+        std::uniform_int_distribution<int> dist(0, 2);
+        int x = dist(rng);
+        int y = dist(rng);
+
+        Move move {x, y};
+        std::cout << getName() << " makes move: " << x << ", " << y << std::endl;
+
         return move;
     }
 
