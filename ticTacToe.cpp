@@ -13,7 +13,7 @@ int main()
     while (playAgain) {
         GameBoard board(3);
         std::shared_ptr<Player> player1 = std::make_unique<HumanPlayer>("XXX", 'X');
-        std::shared_ptr<Player> player2 = std::make_unique<ComputerPlayer>("YYY", '0');       
+        std::shared_ptr<Player> player2 = std::make_unique<ComputerPlayer>("YYY", '0', board);       
 
         std::shared_ptr<Player> currentPlayer = player1;
 
@@ -37,18 +37,15 @@ int main()
             board.display();
 
             currentPlayer = (currentPlayer == player1) ? player2 : player1;
-
-            if(currentPlayer->getTypeOfPlayer() == PlayerType::Human)
-                std::cout << "NOW ITS HUMAN MOVE\n";
         }
 
         if(board.checkWinner())
-            std::cout << "Winner! " << currentPlayer->getName();
+            std::cout << "Winner! \n" << currentPlayer->getName();
         else
             std::cout << "DRAW!\n";
 
         std::string choice;
-        std::cout << "Do you want to play again? (Y/N) ";
+        std::cout << "\nDo you want to play again? (Y/N) ";
         std::cin >> choice;
         if (choice != "Y" && choice != "y")
             playAgain = false;

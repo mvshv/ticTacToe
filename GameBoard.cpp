@@ -4,8 +4,7 @@
 GameBoard::GameBoard(int size) : 
     board(size, std::vector<char>(size, ' ')),
     currentSymbol('X'),
-    boardSize(size) {
-
+    boardSize(size) { 
     }
 
 GameBoard::~GameBoard() {
@@ -13,7 +12,6 @@ GameBoard::~GameBoard() {
 }
 
 void GameBoard::display() const{
-
     system("clear");
     for(int i = 0; i < boardSize; ++i) {
         for(int j = 0; j < boardSize; ++j) {
@@ -67,7 +65,6 @@ bool GameBoard::checkWinner() const {
     for(int i = 0; i < board.size() - 2; ++i)
         if(board[i][board.size() - 1] != ' ' && board[i][board.size() - 1] == board[i + 1][board.size() - 2] && board[i + 1][board.size() - 2] == board[i + 2][board.size() - 3])
             return true;
-
 
     return false;
 }

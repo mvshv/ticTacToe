@@ -1,3 +1,6 @@
+#ifndef GAMEBOARD_HPP
+#define GAMEBOARD_HPP
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -13,10 +16,13 @@ class GameBoard {
     bool checkMoveValid(int x, int y) const;
     GameBoard(int size);
     ~GameBoard();
-
-    private:
     std::vector<std::vector<char>> board;
     char currentSymbol;
+    private:
+
+
     int boardSize;
     void changeSymbol();
 };
+
+#endif // GAMEBOARD_HPP

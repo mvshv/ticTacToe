@@ -3,7 +3,7 @@
 Player::Player() {
     name = "XYZ";
     symbol = 'N';
-    
+    type = PlayerType::Human;
 }
 
 Player::Player(std::string setName, char symbol, PlayerType type) : 
