@@ -10,6 +10,8 @@ add_executable(TicTacToe
     ticTacToe.cpp
     GameBoard.cpp
     Player.cpp
+    ComputerPlayer.cpp
+    HumanPlayer.cpp
 )
 
 add_subdirectory(tests)

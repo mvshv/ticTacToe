@@ -1,5 +1,6 @@
 #include "GameBoard.hpp"
-#include "Player.hpp"
+#include "HumanPlayer.hpp"
+#include "ComputerPlayer.hpp"
 
 #include <iostream>
 #include <string>

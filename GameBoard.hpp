@@ -25,4 +25,4 @@ class GameBoard {
     void changeSymbol();
 };
 
-#endif // GAMEBOARD_HPP
+#endif //GAMEBOARD_HPP
